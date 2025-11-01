@@ -1,0 +1,38 @@
+172.20.0.1 - - [30/Oct/2025:18:14:40 +0000] "GET /version HTTP/1.1" 200 57 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:18:14:40 +0000","remote_addr":"172.20.0.1","request":"GET /version HTTP/1.1","status":"200","request_time":"0.094","upstream_response_time":"0.094","upstream_status":"200","upstream_addr":"172.20.0.2:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+172.20.0.1 - - [30/Oct/2025:18:19:01 +0000] "GET /version HTTP/1.1" 200 57 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:18:19:01 +0000","remote_addr":"172.20.0.1","request":"GET /version HTTP/1.1","status":"200","request_time":"1.041","upstream_response_time":"1.001, 0.040","upstream_status":"504, 200","upstream_addr":"172.20.0.2:3000, 172.20.0.3:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+172.20.0.1 - - [30/Oct/2025:18:23:24 +0000] "GET /version HTTP/1.1" 200 57 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:18:23:24 +0000","remote_addr":"172.20.0.1","request":"GET /version HTTP/1.1","status":"200","request_time":"1.007","upstream_response_time":"1.001, 0.005","upstream_status":"504, 200","upstream_addr":"172.20.0.2:3000, 172.20.0.3:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+172.20.0.1 - - [30/Oct/2025:21:08:17 +0000] "GET /doesnotexist HTTP/1.1" 504 167 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:21:08:17 +0000","remote_addr":"172.20.0.1","request":"GET /doesnotexist HTTP/1.1","status":"504","request_time":"6.101","upstream_response_time":"1.001, 5.176","upstream_status":"504, 504","upstream_addr":"172.20.0.2:3000, 172.20.0.3:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+172.20.0.1 - - [30/Oct/2025:21:08:18 +0000] "GET /doesnotexist HTTP/1.1" 404 151 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:21:08:18 +0000","remote_addr":"172.20.0.1","request":"GET /doesnotexist HTTP/1.1","status":"404","request_time":"1.185","upstream_response_time":"1.001, 0.185","upstream_status":"504, 404","upstream_addr":"172.20.0.2:3000, 172.20.0.3:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+172.20.0.1 - - [30/Oct/2025:21:08:18 +0000] "GET /doesnotexist HTTP/1.1" 404 151 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:21:08:18 +0000","remote_addr":"172.20.0.1","request":"GET /doesnotexist HTTP/1.1","status":"404","request_time":"0.003","upstream_response_time":"0.003","upstream_status":"404","upstream_addr":"172.20.0.3:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+172.20.0.1 - - [30/Oct/2025:21:08:18 +0000] "GET /doesnotexist HTTP/1.1" 404 151 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:21:08:18 +0000","remote_addr":"172.20.0.1","request":"GET /doesnotexist HTTP/1.1","status":"404","request_time":"0.034","upstream_response_time":"0.034","upstream_status":"404","upstream_addr":"172.20.0.3:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+172.20.0.1 - - [30/Oct/2025:21:08:18 +0000] "GET /doesnotexist HTTP/1.1" 404 151 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:21:08:18 +0000","remote_addr":"172.20.0.1","request":"GET /doesnotexist HTTP/1.1","status":"404","request_time":"0.004","upstream_response_time":"0.003","upstream_status":"404","upstream_addr":"172.20.0.3:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+172.20.0.1 - - [30/Oct/2025:21:08:18 +0000] "GET /doesnotexist HTTP/1.1" 404 151 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:21:08:18 +0000","remote_addr":"172.20.0.1","request":"GET /doesnotexist HTTP/1.1","status":"404","request_time":"0.002","upstream_response_time":"0.003","upstream_status":"404","upstream_addr":"172.20.0.3:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+172.20.0.1 - - [30/Oct/2025:21:08:18 +0000] "GET /doesnotexist HTTP/1.1" 404 151 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:21:08:18 +0000","remote_addr":"172.20.0.1","request":"GET /doesnotexist HTTP/1.1","status":"404","request_time":"0.003","upstream_response_time":"0.004","upstream_status":"404","upstream_addr":"172.20.0.3:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+172.20.0.1 - - [30/Oct/2025:21:08:19 +0000] "GET /doesnotexist HTTP/1.1" 404 151 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:21:08:19 +0000","remote_addr":"172.20.0.1","request":"GET /doesnotexist HTTP/1.1","status":"404","request_time":"0.004","upstream_response_time":"0.004","upstream_status":"404","upstream_addr":"172.20.0.3:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+172.20.0.1 - - [30/Oct/2025:21:08:19 +0000] "GET /doesnotexist HTTP/1.1" 404 151 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:21:08:19 +0000","remote_addr":"172.20.0.1","request":"GET /doesnotexist HTTP/1.1","status":"404","request_time":"0.005","upstream_response_time":"0.005","upstream_status":"404","upstream_addr":"172.20.0.3:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+172.20.0.1 - - [30/Oct/2025:21:08:19 +0000] "GET /doesnotexist HTTP/1.1" 404 151 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:21:08:19 +0000","remote_addr":"172.20.0.1","request":"GET /doesnotexist HTTP/1.1","status":"404","request_time":"0.002","upstream_response_time":"0.002","upstream_status":"404","upstream_addr":"172.20.0.3:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+172.20.0.1 - - [30/Oct/2025:21:31:30 +0000] "GET /version HTTP/1.1" 200 57 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:21:31:30 +0000","remote_addr":"172.20.0.1","request":"GET /version HTTP/1.1","status":"200","request_time":"0.141","upstream_response_time":"0.141","upstream_status":"200","upstream_addr":"172.20.0.2:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+172.20.0.1 - - [30/Oct/2025:21:31:30 +0000] "GET /version HTTP/1.1" 200 57 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:21:31:30 +0000","remote_addr":"172.20.0.1","request":"GET /version HTTP/1.1","status":"200","request_time":"0.003","upstream_response_time":"0.003","upstream_status":"200","upstream_addr":"172.20.0.2:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+172.20.0.1 - - [30/Oct/2025:21:31:30 +0000] "GET /version HTTP/1.1" 200 57 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:21:31:30 +0000","remote_addr":"172.20.0.1","request":"GET /version HTTP/1.1","status":"200","request_time":"0.003","upstream_response_time":"0.003","upstream_status":"200","upstream_addr":"172.20.0.2:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+172.20.0.1 - - [30/Oct/2025:21:31:30 +0000] "GET /version HTTP/1.1" 200 57 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:21:31:30 +0000","remote_addr":"172.20.0.1","request":"GET /version HTTP/1.1","status":"200","request_time":"0.003","upstream_response_time":"0.002","upstream_status":"200","upstream_addr":"172.20.0.2:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+172.20.0.1 - - [30/Oct/2025:21:31:30 +0000] "GET /version HTTP/1.1" 200 57 "-" "curl/8.5.0" "-"
+{"time_local":"30/Oct/2025:21:31:30 +0000","remote_addr":"172.20.0.1","request":"GET /version HTTP/1.1","status":"200","request_time":"0.004","upstream_response_time":"0.004","upstream_status":"200","upstream_addr":"172.20.0.2:3000","x_app_pool":"","x_release_id":"","upstream_cache_status":""}
+{"status":"500","time_local":"30/Oct/2025:21:33:24 +0000","x_app_pool":"blue"}
+127.0.0.1 - - [30/Oct/2025:22:45:00 +0000] "GET /error HTTP/1.1" 500 123 "-" "curl"
