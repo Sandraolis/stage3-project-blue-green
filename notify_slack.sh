@@ -4,7 +4,7 @@
 SLACK_WEBHOOK_URL=    # replace this with webhook URL
 
 # Message to send
-MESSAGE="Failover 🚨"
+MESSAGE="Failover"
 
 # Send to Slack
 curl -X POST -H 'Content-type: application/json' \
