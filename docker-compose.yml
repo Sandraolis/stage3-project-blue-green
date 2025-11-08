@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   # --------------------
   # Blue App
@@ -6,7 +8,7 @@ services:
     image: yimikaade/wonderful:devops-stage-two
     container_name: app_blue
     ports:
-      - "8081:3000"   # internal port 3000 exposed as 8081
+      - "8081:3000"
     environment:
       - X_APP_POOL=blue
       - X_RELEASE_ID=blue-v1
@@ -20,7 +22,7 @@ services:
     image: yimikaade/wonderful:devops-stage-two
     container_name: app_green
     ports:
-      - "8082:3000"   # internal port 3000 exposed as 8082
+      - "8082:3000"
     environment:
       - X_APP_POOL=green
       - X_RELEASE_ID=green-v1
@@ -36,13 +38,14 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./nginx/nginx.conf.template:/etc/nginx/nginx.conf:ro
+      - ./nginx/nginx.conf.template:/etc/nginx/nginx.conf.template:ro
       - nginx_logs:/var/log/nginx
     depends_on:
       - app_blue
       - app_green
     environment:
       - ACTIVE_POOL=${ACTIVE_POOL}
+    command: /bin/sh -c "envsubst '$$ACTIVE_POOL' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
 
   # --------------------
   # Alert Watcher
