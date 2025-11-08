@@ -28,7 +28,7 @@ services:
       - nginx_logs:/var/log/nginx
 
   # ─────────────────────
-  # Nginx Reverse Proxy
+  # Nginx Reverse Proxy (FIXED)
   # ─────────────────────
   nginx:
     image: nginx:latest
@@ -43,15 +43,15 @@ services:
       - app_green
     environment:
       - ACTIVE_POOL=${ACTIVE_POOL:-app_blue}
-    command: >
-      /bin/sh -c '
-        echo "Using ACTIVE_POOL=$$ACTIVE_POOL" &&
-        envsubst ''$$ACTIVE_POOL'' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf &&
-        echo "--- Generated upstream ---" &&
-        grep -A3 "upstream active_pool" /etc/nginx/nginx.conf &&
-        nginx -t &&
-        exec nginx -g "daemon off;"
-      '
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        echo "Using ACTIVE_POOL: $ACTIVE_POOL" && \
+        envsubst '$${ACTIVE_POOL}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && \
+        echo "Generated nginx.conf:" && \
+        cat /etc/nginx/nginx.conf && \
+        nginx -t && \
+        exec nginx -g 'daemon off;'
 
   # ─────────────────────
   # Alert Watcher
