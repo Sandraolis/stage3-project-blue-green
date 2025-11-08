@@ -32,11 +32,11 @@ services:
   # ─────────────────────
   # Nginx Reverse Proxy
   # ─────────────────────
-  nginx:
+    nginx:
     image: nginx:latest
     container_name: nginx
     ports:
-      - "8080:80"                     # host → container
+      - "8080:80"
     volumes:
       - ./nginx/nginx.conf.template:/etc/nginx/nginx.conf.template:ro
       - nginx_logs:/var/log/nginx
@@ -44,11 +44,16 @@ services:
       - app_blue
       - app_green
     environment:
-      - ACTIVE_POOL=${ACTIVE_POOL:-app_blue}   # default = blue
-    # NOTE the double-dollar sign and the single quotes around the variable
+      - ACTIVE_POOL=${ACTIVE_POOL:-app_blue}
     command: >
-      /bin/sh -c "envsubst '\\$ACTIVE_POOL' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && 
-                  nginx -g 'daemon off;'"
+      /bin/sh -c "
+        echo 'ACTIVE_POOL = ${ACTIVE_POOL:-app_blue}' &&
+        envsubst '\\$ACTIVE_POOL' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf &&
+        echo '--- Generated upstream ---' &&
+        grep -A3 'upstream active_pool' /etc/nginx/nginx.conf &&
+        nginx -t && 
+        exec nginx -g 'daemon off;'
+      "
 
   # ─────────────────────
   # Alert Watcher
