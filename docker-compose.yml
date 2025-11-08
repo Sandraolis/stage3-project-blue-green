@@ -44,14 +44,14 @@ services:
     environment:
       - ACTIVE_POOL=${ACTIVE_POOL:-app_blue}
     command: >
-      /bin/sh -c "
-        echo 'Using ACTIVE_POOL=${ACTIVE_POOL:-app_blue}' &&
-        envsubst '\\$ACTIVE_POOL' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf &&
-        echo '--- Generated upstream ---' &&
-        grep -A3 'upstream active_pool' /etc/nginx/nginx.conf &&
+      /bin/sh -c '
+        echo "Using ACTIVE_POOL=$$ACTIVE_POOL" &&
+        envsubst ''$$ACTIVE_POOL'' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf &&
+        echo "--- Generated upstream ---" &&
+        grep -A3 "upstream active_pool" /etc/nginx/nginx.conf &&
         nginx -t &&
-        exec nginx -g 'daemon off;'
-      "
+        exec nginx -g "daemon off;"
+      '
 
   # ─────────────────────
   # Alert Watcher
