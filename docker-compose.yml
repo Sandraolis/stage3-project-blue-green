@@ -1,9 +1,9 @@
 version: "3.9"
 
 services:
-  # --------------------
+  # ─────────────────────
   # Blue App
-  # --------------------
+  # ─────────────────────
   app_blue:
     image: yimikaade/wonderful:devops-stage-two
     container_name: app_blue
@@ -15,9 +15,9 @@ services:
     volumes:
       - nginx_logs:/var/log/nginx
 
-  # --------------------
+  # ─────────────────────
   # Green App
-  # --------------------
+  # ─────────────────────
   app_green:
     image: yimikaade/wonderful:devops-stage-two
     container_name: app_green
@@ -29,14 +29,14 @@ services:
     volumes:
       - nginx_logs:/var/log/nginx
 
-  # --------------------
+  # ─────────────────────
   # Nginx Reverse Proxy
-  # --------------------
+  # ─────────────────────
   nginx:
     image: nginx:latest
     container_name: nginx
     ports:
-      - "8080:80"
+      - "8080:80"                     # host → container
     volumes:
       - ./nginx/nginx.conf.template:/etc/nginx/nginx.conf.template:ro
       - nginx_logs:/var/log/nginx
@@ -44,12 +44,15 @@ services:
       - app_blue
       - app_green
     environment:
-      - ACTIVE_POOL=${ACTIVE_POOL}
-    command: /bin/sh -c "envsubst '$$ACTIVE_POOL' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
+      - ACTIVE_POOL=${ACTIVE_POOL:-app_blue}   # default = blue
+    # NOTE the double-dollar sign and the single quotes around the variable
+    command: >
+      /bin/sh -c "envsubst '\\$ACTIVE_POOL' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && 
+                  nginx -g 'daemon off;'"
 
-  # --------------------
+  # ─────────────────────
   # Alert Watcher
-  # --------------------
+  # ─────────────────────
   alert_watcher:
     build: ./watcher
     container_name: alert_watcher
