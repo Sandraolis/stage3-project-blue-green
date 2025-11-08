@@ -1,3 +1,4 @@
+cat > ./nginx/nginx.conf.template << 'EOF'
 user  nginx;
 worker_processes  auto;
 
@@ -12,20 +13,10 @@ http {
     include       /etc/nginx/mime.types;
     default_type  application/octet-stream;
 
-    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-                      '$status $body_bytes_sent "$http_referer" '
-                      '"$http_user_agent" "$http_x_forwarded_for"';
+    access_log  /var/log/nginx/access.log;
 
-    access_log  /var/log/nginx/access.log  main;
-
-    sendfile        on;
-    keepalive_timeout  65;
-
-    # -------------------------------------------------
-    # Dynamically chosen upstream (blue or green)
-    # -------------------------------------------------
     upstream active_pool {
-        server ${ACTIVE_POOL}:3000;   # <-- 3000 is the app port inside Docker
+        server ${ACTIVE_POOL}:3000;
     }
 
     server {
@@ -35,15 +26,7 @@ http {
             proxy_pass http://active_pool;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
-        }
-
-        # Optional: health-check endpoint
-        location /health {
-            access_log off;
-            return 200 "OK\n";
-            add_header Content-Type text/plain;
         }
     }
 }
+EOF
